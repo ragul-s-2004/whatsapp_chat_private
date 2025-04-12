@@ -60,7 +60,7 @@ const App = () => {
   return (
     <div className="app-container">
       <div className="chat-header">
-        <div className="chat-title">RAGUL ↔ mithu☠️</div>
+        <div className="chat-title">RAGUL☠️</div>
       </div>
       
       <div className="bookmark-bar">
