@@ -1,20 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import MessageList from './MessageList';
 import './Message.css';
 
+type Message = {
+  Datetime: string;
+  Sender: string;
+  Message: string;
+};
+
 const App = () => {
-  const [allMessages, setAllMessages] = useState([]);
-  const [displayMessages, setDisplayMessages] = useState([]);
+  const [allMessages, setAllMessages] = useState<Message[]>([]);
+  const [displayMessages, setDisplayMessages] = useState<Message[]>([]);
   const [currentChunk, setCurrentChunk] = useState(0);
   const [loading, setLoading] = useState(true);
-  const chunks = 43; // 43 bookmarks for 43,000 messages
+  const chunks = 43;
 
   useEffect(() => {
     const loadMessages = async () => {
       try {
-        const data = await import('./WhatsApp_Chat_Parsed.json');
-        setAllMessages(data.default || data);
-        setDisplayMessages((data.default || data).slice(0, 1000));
+        // Type assertion for the import
+        const data: { default?: unknown } = await import('./WhatsApp_Chat_Parsed.json');
+        
+        // Type guard to verify the data structure
+        const parseMessages = (rawData: unknown): Message[] => {
+          if (!Array.isArray(rawData)) return [];
+          
+          return rawData.filter((item): item is Message => (
+            typeof item === 'object' &&
+            item !== null &&
+            'Datetime' in item &&
+            'Sender' in item &&
+            'Message' in item
+          ));
+        };
+      
+        // Handle both default export and direct array cases
+        const messages = parseMessages(data.default ?? data);
+        
+        setAllMessages(messages);
+        setDisplayMessages(messages.slice(0, 1000));
       } catch (error) {
         console.error("Error loading messages:", error);
       } finally {
@@ -24,7 +48,7 @@ const App = () => {
     loadMessages();
   }, []);
 
-  const jumpToChunk = (chunkIndex) => {
+  const jumpToChunk = (chunkIndex: number) => {
     const start = chunkIndex * 1000;
     const end = start + 1000;
     setDisplayMessages(allMessages.slice(start, end));
@@ -39,7 +63,6 @@ const App = () => {
         <div className="chat-title">RAGUL ↔ mithu☠️</div>
       </div>
       
-      {/* Bookmark Navigation */}
       <div className="bookmark-bar">
         {Array.from({ length: chunks }).map((_, index) => (
           <button
