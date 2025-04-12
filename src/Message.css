@@ -1,0 +1,438 @@
+/* Main container - mobile optimized */
+.app-container {
+    width: 100%;
+    max-width: 420px; /* Mobile-friendly width */
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    background-color: #e5ddd5;
+    background-image: url('https://web.whatsapp.com/img/bg-chat-tile-light_a4be512e7195b6b733d9110b408f075d.png');
+  }
+  
+  /* Message container */
+  .messages-container {
+    flex: 1;
+    padding: 10px 8px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  /* Message rows */
+  .message-row {
+    display: flex;
+    width: 100%;
+    padding: 2px 0;
+  }
+  
+  .left-row {
+    justify-content: flex-start;
+  }
+  
+  .right-row {
+    justify-content: flex-end;
+  }
+  
+  /* Message bubbles - mobile optimized */
+  .message-bubble {
+    max-width: 80%; /* More width for mobile */
+    min-width: 60px;
+    padding: 6px 9px;
+    border-radius: 7.5px;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .left-bubble {
+    background-color: #ffffff;
+    border-top-left-radius: 0;
+    margin-right: 10%;
+  }
+  
+  .right-bubble {
+    background-color: #dcf8c6;
+    border-top-right-radius: 0;
+    margin-left: 10%;
+  }
+  
+  /* Message text - mobile optimized */
+  .message-text {
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 3px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  
+  /* Media message - mobile optimized */
+  .media-message {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  
+  .media-placeholder {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    padding: 25px;
+    text-align: center;
+    font-size: 22px;
+  }
+  
+  .media-caption {
+    font-size: 13px;
+    color: #666;
+  }
+  
+  /* Message footer - mobile optimized */
+  .message-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 3px;
+  }
+  
+  .message-time {
+    font-size: 11px;
+    color: #667781;
+  }
+  
+  .right-bubble .message-time {
+    color: #4fc3f7;
+  }
+  
+  .message-status {
+    font-size: 11px;
+    color: #4fc3f7;
+  }
+  
+  /* Header styles - mobile optimized */
+  .chat-header {
+    background-color: #075e54;
+    color: white;
+    padding: 12px 8px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    font-size: 16px;
+  }
+  
+  .chat-title {
+    font-weight: 500;
+  }
+  
+  /* Input area - mobile optimized */
+  .message-input-container {
+    padding: 8px;
+    background-color: #f0f0f0;
+    position: sticky;
+    bottom: 0;
+  }
+  
+  .message-input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  /* Loading state */
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 16px;
+  }
+
+  /* Bookmark Navigation */
+.bookmark-bar {
+    position: sticky;
+    top: 50px;
+    background: white;
+    padding: 8px;
+    display: flex;
+    overflow-x: auto;
+    gap: 4px;
+    z-index: 90;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .bookmark {
+    flex-shrink: 0;
+    padding: 6px 10px;
+    border: 1px solid #075e54;
+    border-radius: 15px;
+    background: white;
+    color: #075e54;
+    font-size: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .bookmark:hover {
+    background: #f0f0f0;
+  }
+  
+  .bookmark.active {
+    background: #075e54;
+    color: white;
+  }
+  
+  /* Adjust header position */
+  .chat-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  /* Adjust message container */
+  .messages-container {
+    padding-top: 10px;
+  }
+
+  /* Media messages */
+.media-message {
+    max-width: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .media-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .media-image:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Add this for lightbox/modal (optional) */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-image {
+    max-width: 90%;
+    max-height: 90%;
+  }
+
+  /* Media messages */
+.media-message {
+    max-width: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .media-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .media-image:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Add this for lightbox/modal (optional) */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-image {
+    max-width: 90%;
+    max-height: 90%;
+  }
+
+  /* Media messages */
+.media-message {
+    max-width: 250px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 4px 0;
+  }
+  
+  .media-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .media-placeholder {
+    padding: 12px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  /* Media Preview Styles */
+.media-preview-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .media-preview-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+  }
+  
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin: 15px 0;
+  }
+  
+  .media-thumbnail {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .media-thumbnail:hover {
+    transform: scale(1.05);
+  }
+  
+  .close-button {
+    padding: 8px 15px;
+    background: #075e54;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  /* Media Placeholder Enhancements */
+  .media-placeholder.clickable {
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .media-placeholder.clickable:hover {
+    background: rgba(0,0,0,0.05);
+  }
+  
+  .media-hint {
+    font-size: 0.8em;
+    color: #666;
+    margin-left: 5px;
+  }
+
+  /* Bookmark Navigation */
+.bookmark-bar {
+    position: sticky;
+    top: 50px;
+    background: white;
+    padding: 8px;
+    display: flex;
+    overflow-x: auto;
+    gap: 4px;
+    z-index: 90;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .bookmark {
+    flex-shrink: 0;
+    padding: 6px 10px;
+    border: 1px solid #075e54;
+    border-radius: 15px;
+    background: white;
+    color: #075e54;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  
+  .bookmark.active {
+    background: #075e54;
+    color: white;
+  }
+  
+  /* Media Display */
+  .message-image {
+    max-width: 250px;
+    max-height: 250px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 4px;
+  }
+  
+  .media-placeholder.clickable {
+    cursor: pointer;
+    padding: 8px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 4px;
+    display: inline-block;
+  }
+  
+  /* Media Preview Overlay */
+  .media-preview-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .media-preview-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+    max-height: 90%;
+  }
+  
+  /* Rest of your existing styles remain unchanged */
